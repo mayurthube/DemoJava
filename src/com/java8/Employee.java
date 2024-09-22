@@ -15,8 +15,9 @@ public class Employee {
     int yearOfJoining;
      
     double salary;
+    int rating;
      
-    public Employee(int id, String name, int age, String gender, String department, int yearOfJoining, double salary) 
+    public Employee(int id, String name, int age, String gender, String department, int yearOfJoining, double salary,int rating) 
     {
         this.id = id;
         this.name = name;
@@ -25,6 +26,7 @@ public class Employee {
         this.department = department;
         this.yearOfJoining = yearOfJoining;
         this.salary = salary;
+        this.rating = rating;
     }
 
 	public int getId() {
@@ -82,12 +84,24 @@ public class Employee {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
+	
+	
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
 
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", department="
-				+ department + ", yearOfJoining=" + yearOfJoining + ", salary=" + salary + "]";
+				+ department + ", yearOfJoining=" + yearOfJoining + ", salary=" + salary + ", rating=" + rating + "]";
 	}
+
+	
     
     
 }

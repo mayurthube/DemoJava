@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import com.java8.Employee;
@@ -55,7 +56,42 @@ public class StreamApiQuery {
 		System.out.println("\nWhat is the average salary of each department ::\n"+ departmentWiseAvgSalary);
 		
 		//Query 8 : Get the details of youngest male employee in the product development department
+		Optional<Employee> youngestEmployeeWrapper = employeeList.stream().filter(e->e.getDepartment().equals("Product Development")).min(Comparator.comparingInt(Employee:: getAge));
+		System.out.println("\nGet the details of youngest male employee in the product development department ::\n"+ youngestEmployeeWrapper.get());
+	
+		//Query 14 : Separate the employees who are younger or equal to 25 years from those employees who are older than 25 years .
+		Map<Boolean,List<Employee>> partitionEmployeesByAge = employeeList.stream().collect(Collectors.partitioningBy(e-> e.getAge()>25 && e.getAge()<30));
+		System.out.println("\nSeparate the employees who are younger or equal to 25 years from those employees who are older than 25 years ::\n"+ partitionEmployeesByAge.toString());
+		System.out.println("\n");
+		for (Entry<Boolean, List<Employee>> entry : partitionEmployeesByAge.entrySet()) 
+		{
+		    System.out.println("----------------------------");
+		             
+		    if (entry.getKey()) 
+		    {
+		        System.out.println("Employees older than 25 years :");
+		    }
+		    else
+		    {
+		        System.out.println("Employees younger than or equal to 25 years :");
+		    }
+		             
+		    System.out.println("----------------------------");
+		             
+		    List<Employee> list = entry.getValue();
+		             
+		    for (Employee e : list) 
+		    {
+		        System.out.println(e.getName());
+		    }
+		}
 		
+		// Collectors.mapping
+		
+				List<String> departmentList = employeeList.stream().collect(Collectors.mapping(e-> e.getDepartment(), Collectors.toList()));
+				System.out.println("\n departmentList :: "+departmentList);
 		
 	}
+	
+	
 }
