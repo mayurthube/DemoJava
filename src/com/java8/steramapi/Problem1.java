@@ -76,7 +76,7 @@ public class Problem1 {
 		
 	//5. Find the longest word in the given sentence using streams
 		System.out.println("\n---5. Find the longest word in the given sentence using streams---");
-		String stamenet = "apple banana cat dog elephant frog grape house igloo jelly kite lemon mango notebook orange pineapple quilt rabbit sun turtle umbrella violin whale xylophone yellow zebr";
+		String stamenet = "applee banana cat dog elephant frog grape house igloo jelly kite lemon mango notebook orange pineapple quilt rabbit sun turtle umbrella violin whale xylophone yellow zebr";
 		Optional<String> longestWord = Arrays.asList(stamenet.split(" ")).stream().max(Comparator.comparingInt(s -> s.length()));
 		System.out.println("the longest word in the given sentence :"+longestWord.get()); 
 	//6. Find the Max salary of each department using stream APIs.
